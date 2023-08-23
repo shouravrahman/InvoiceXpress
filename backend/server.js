@@ -4,7 +4,7 @@ import morgan from "morgan";
 import "dotenv/config";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
+import { morganMiddleware, systemLogs } from "./utils/logger.js";
 const app = express();
 
 if (process.env.NODE_ENV === "development") {
@@ -13,6 +13,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(morganMiddleware);
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/api/v1/test", (req, res) => {
@@ -28,5 +29,8 @@ app.listen(PORT, () => {
 		)} 👍 Server is running in ${chalk.blueBright.bold(
 			process.env.NODE_ENV
 		)} mode on PORT ${chalk.green.bold(PORT)}`
+	);
+	systemLogs.info(
+		`Server is running in ${process.env.NODE_ENV} mode on PORT ${PORT}`
 	);
 });
