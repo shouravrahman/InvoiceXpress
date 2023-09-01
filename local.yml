@@ -11,12 +11,22 @@ services:
       - .:/app
     depends_on:
       - mongodb
-    ports:
-      - "2001:2001"
+    # ports:
+    #   - "2001:2001"
     environment:
       NODE_ENV: ${NODE_ENV}
       MONGO_URI: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb
       FORCE_COLOR: 1
+    networks:
+      - invoice-express
+  client:
+    build:
+      context: ./client
+      dockerfile: ./docker/local/Dockerfile
+    restart: on-failure
+    volumes:
+      - ./client:/app
+      - /app/node_modules
     networks:
       - invoice-express
 
@@ -56,9 +66,28 @@ services:
     networks:
       - invoice-express
 
+  nginx:
+    build:
+      context: ./docker/local/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    restart: always
+    depends_on:
+      - api
+
+    volumes:
+      - /static_volume:/app/staticfiles
+      - /pdf_volume:/app/docs
+
+    networks:
+      - invoice-express
+
 networks:
   invoice-express:
     driver: bridge
 
 volumes:
   mongodb-data:
+  static_volume:
+  pdf_volume:

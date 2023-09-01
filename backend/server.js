@@ -1,8 +1,7 @@
-import express, { urlencoded } from "express";
+import express from "express";
 import chalk from "chalk";
 import morgan from "morgan";
 import "dotenv/config";
-import cors from "cors";
 import cookieParser from "cookie-parser";
 import { morganMiddleware, systemLogs } from "./utils/logger.js";
 const app = express();
@@ -17,7 +16,13 @@ app.use(morganMiddleware);
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/api/v1/test", (req, res) => {
-	res.send("api on work");
+	const books = [
+		{ id: 1, title: "Book 1" },
+		{ id: 2, title: "Book 2" },
+		{ id: 3, title: "Book 3" },
+	];
+
+	res.json(books);
 });
 
 const PORT = process.env.PORT || 2001;
