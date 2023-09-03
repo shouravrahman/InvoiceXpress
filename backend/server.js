@@ -4,6 +4,10 @@ import morgan from "morgan";
 import "dotenv/config";
 import cookieParser from "cookie-parser";
 import { morganMiddleware, systemLogs } from "./utils/logger.js";
+import conncetToDB from "./config/db.js";
+
+await conncetToDB();
+
 const app = express();
 
 if (process.env.NODE_ENV === "development") {
