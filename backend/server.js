@@ -4,6 +4,7 @@ import morgan from "morgan";
 import "dotenv/config";
 import cookieParser from "cookie-parser";
 import { morganMiddleware, systemLogs } from "./utils/logger.js";
+import mongoSanitize from "express-mongo-sanitize";
 import conncetToDB from "./config/db.js";
 
 await conncetToDB();
@@ -16,6 +17,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(mongoSanitize());
 app.use(morganMiddleware);
 app.use(express.urlencoded({ extended: false }));
 
