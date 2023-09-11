@@ -1,7 +1,7 @@
 import "dotenv/config";
 import mongoose from "mongoose";
 import validator from "validator";
-import { USER } from "../constants";
+import { USER } from "../constants/index.js";
 import bcrypt from "bcrypt";
 const { Schema } = mongoose;
 

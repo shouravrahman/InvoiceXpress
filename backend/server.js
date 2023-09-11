@@ -7,6 +7,8 @@ import { morganMiddleware, systemLogs } from "./utils/logger.js";
 import mongoSanitize from "express-mongo-sanitize";
 import conncetToDB from "./config/db.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
+import authRoutes from "./routes/authRoutes.js";
+
 await conncetToDB();
 
 const app = express();
@@ -30,7 +32,7 @@ app.get("/api/v1/test", (req, res) => {
 
 	res.json(books);
 });
-
+app.use("/api/v1/auth", authRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
