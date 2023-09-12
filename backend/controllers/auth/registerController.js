@@ -8,9 +8,9 @@ const domainUrl = process.env.DOMAIN;
 
 const { randomBytes } = await import("crypto");
 
-//!$-title Register User and send email verification link
-//!$-path POST /api/v1/auth/register
-//!$-auth Public
+// $-title Register User and send email verification link
+// $-path POST /api/v1/auth/register
+// $-auth Public
 
 const schema = Joi.object({
 	email: Joi.string().email().required().messages({
@@ -41,7 +41,7 @@ const schema = Joi.object({
 });
 
 const registerUser = asyncHandler(async (req, res) => {
-	//destructure email,username,firstName,lastName,password,confirmPassword
+	// destructure email,username,firstName,lastName,password,confirmPassword
 	const { email, username, firstName, lastName, password, confirmPassword } =
 		req.body;
 
@@ -59,26 +59,27 @@ const registerUser = asyncHandler(async (req, res) => {
 		throw new Error(error);
 	}
 */
-	// if (!email) {
-	// 	res.status(400);
-	// 	throw new Error("Email is required");
-	// }
-	// if (!username) {
-	// 	res.status(400);
-	// 	throw new Error("A username is required");
-	// }
-	// if (!firstName || lastName) {
-	// 	res.status(400);
-	// 	throw new Error("A firstname and lastname must be provided");
-	// }
-	// if (!password) {
-	// 	res.status(400);
-	// 	throw new Error("You must enter a password");
-	// }
-	// if (!confirmPassword) {
-	// 	res.status(400);
-	// 	throw new Error("Confirm password field is required");
-	// }
+	/* if (!email) {
+		res.status(400);
+		throw new Error("Email is required");
+	}
+	if (!username) {
+		res.status(400);
+		throw new Error("A username is required");
+	}
+	if (!firstName || lastName) {
+		res.status(400);
+		throw new Error("A firstname and lastname must be provided");
+	}
+	if (!password) {
+		res.status(400);
+		throw new Error("You must enter a password");
+	}
+	if (!confirmPassword) {
+		res.status(400);
+		throw new Error("Confirm password field is required");
+	}
+	*/
 
 	const { error } = schema.validate(req.body, { abortEarly: false });
 
