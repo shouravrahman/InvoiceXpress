@@ -5,9 +5,9 @@ import sendEmail from "../../utils/sendEmail.js";
 
 const domainUrl = process.env.DOMAIN;
 
-//!$-title Verify User email
-//!$-path GET /api/v1/auth/verify/:emailToken/:userId
-//!$-auth Public
+// $-title Verify User email
+// $-path GET /api/v1/auth/verify/:emailToken/:userId
+// $-auth Public
 
 const verfifyUserEmail = asyncHandler(async (req, res) => {
 	const user = await User.findOne({ _id: req.params.userId }).select(
