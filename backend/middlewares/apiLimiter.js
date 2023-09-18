@@ -1,5 +1,5 @@
 import { rateLimit } from "express-rate-limit";
-import { systemLogs } from "../utils/logger";
+import { systemLogs } from "../utils/logger.js";
 
 export const apiLimiter = rateLimit({
 	windowMs: 15 * 60 * 1000,
