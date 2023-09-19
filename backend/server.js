@@ -8,6 +8,8 @@ import mongoSanitize from "express-mongo-sanitize";
 import conncetToDB from "./config/db.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import { apiLimiter } from "./middlewares/apiLimiter.js";
 
 await conncetToDB();
 
@@ -33,6 +35,7 @@ app.get("/api/v1/test", (req, res) => {
 	res.json(books);
 });
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/user", apiLimiter, userRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
