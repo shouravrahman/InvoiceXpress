@@ -1,9 +1,13 @@
 import "./App.css";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/home";
 
 function App() {
 	return (
-		<div className='App'>
-			<h1>Hello</h1>
+		<div className='w-full h-100vh flex items-center justify-center'>
+			<MainLayout>
+				<Home />
+			</MainLayout>
 		</div>
 	);
 }
