@@ -1,4 +1,4 @@
-ARG NODE_VERSION=20.5.1-alpine3.17
+ARG NODE_VERSION=18.18.0-alpine3.18
 
 FROM node:${NODE_VERSION}
 
@@ -20,6 +20,7 @@ RUN addgroup --system invoice \
 
 COPY package*.json ./
 RUN npm install 
+RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 COPY --chown=invoiceuser:invoice . ${APP_HOME}
 
 RUN chown invoiceuser:invoice ${APP_HOME}
