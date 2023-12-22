@@ -4,6 +4,14 @@ module.exports = {
 	// 	"node_modules/daisyui/dist/**/*.js",
 	// 	"node_modules/react-daisyui/dist/**/*.js",
 	// ],
+	theme: {
+		extend: {
+			backgroundImage: {
+				"hero-pattern": "url('/src/images/StockChart.svg')",
+			},
+		},
+	},
+
 	content: ["./src/**/*.{js,ts,jsx,tsx}"],
 	plugins: [require("daisyui")],
 	daisyui: {
