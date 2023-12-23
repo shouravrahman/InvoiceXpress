@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
 	return (
-		<footer className='footer p-10 text-base-content  max-w-screen-2xl'>
-			<a href='/' className='cursor-pointer w-[10vw]'>
+		<footer className='footer p-10 text-base-content  max-w-[100rem]'>
+			<a href='/' className='cursor-pointer w-[30vw] md:w-[10vw]'>
 				<img
 					src='logo-trs.png'
 					className='max-w-full h-auto object-cover'

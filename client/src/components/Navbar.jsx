@@ -21,7 +21,7 @@ export const userMenuItems = [
 
 const Navbar = () => {
 	return (
-		<div className='navbar max-w-screen-2xl bg-base-100 px-4 md:px-10 py-5'>
+		<div className='navbar max-w-[100rem] bg-base-100 px-4 md:px-10 py-5'>
 			{/* Mobile Menu */}
 			<MobileMenu />
 

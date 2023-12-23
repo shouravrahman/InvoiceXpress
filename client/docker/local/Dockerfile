@@ -6,12 +6,13 @@ FROM node:${NODE_VERSION}
 ARG APP_HOME=/app
 
 WORKDIR ${APP_HOME}
-COPY ./ ${APP_HOME}
+
 
 
 
 COPY package*.json ./
 RUN npm install 
+COPY . ${APP_HOME}
 RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 
 
