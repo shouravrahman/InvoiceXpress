@@ -6,7 +6,9 @@
 	"type": "module",
 	"scripts": {
 		"start": "node backend/server.js",
-		"dev": "nodemon backend/server.js"
+		"server:dev": "nodemon backend/server.js",
+		"client:dev": "npm start --prefix client",
+		"dev": "concurrently \"npm run server:dev\" \"npm run client:dev\""
 	},
 	"repository": {
 		"type": "git",
@@ -45,6 +47,7 @@
 		"winston-daily-rotate-file": "^4.7.1"
 	},
 	"devDependencies": {
+		"concurrently": "^8.2.2",
 		"nodemon": "^3.0.1"
 	}
 }
