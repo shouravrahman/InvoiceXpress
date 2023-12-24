@@ -5,7 +5,16 @@ module.exports = {
 	// 	"node_modules/react-daisyui/dist/**/*.js",
 	// ],
 	theme: {
+		fontFamily: {
+			figtree: "Figtree",
+		},
 		extend: {
+			fontSize: {
+				md: "1.2rem",
+				"3xl": ["1.5rem", "2rem"],
+				"4xl": "2.25rem",
+				"5xl": "3rem",
+			},
 			backgroundImage: {
 				"hero-pattern": "url('/src/images/StockChart.svg')",
 			},
