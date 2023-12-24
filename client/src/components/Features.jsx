@@ -14,7 +14,7 @@ const TabContent = ({ img, href, details, headline }) => {
 			<section className='flex flex-col flex-[0.5] justify-center items-start h-full gap-6'>
 				<h1 className='text-2xl font-semibold'>{headline}</h1>
 				<p className='text-lg'>{details}</p>
-				<Button className='btn-info mt-2' href={href}>
+				<Button className='btn btn-accent mt-2 text-base' href={href}>
 					Check out all our features ➡
 				</Button>
 			</section>
@@ -87,12 +87,12 @@ Ensure that your customers are on board with your prices before you start billin
 
 const Features = () => {
 	return (
-		<div className='w-screen flex flex-col  text-base justify-center items-center bg-base-200'>
-			<h1 className='text-2xl md:text-4xl text-center p-1 mt-12 md:mt-16'>
+		<div className='w-screen flex flex-col text-base justify-center items-center bg-[#150d30]'>
+			<h1 className='text-3xl font-figtree md:text-4xl text-center p-1 mt-12 md:mt-16'>
 				Everything you need for your business's billing process ⬇
 			</h1>
 
-			<div className='bg-base-200 w-full my-4 md:my-8'>
+			<div className='bg-[#150d30] w-full my-4 md:my-8'>
 				<TabsComponent />
 			</div>
 		</div>
@@ -105,12 +105,12 @@ function TabsComponent() {
 	const [openTab, setOpenTab] = useState("Quotes");
 
 	return (
-		<div className='container mx-auto'>
+		<div className='container mx-auto text-base'>
 			<div className='flex flex-wrap flex-col items-center justify-center py-8 md:py-20 px-6 md:px-10'>
 				<ul className='flex flex-wrap space-x-2 gap-4 cursor-pointer'>
 					{tabs.map((tab, i) => (
 						<li key={tab.name}>
-							<div
+							<button
 								onClick={() => setOpenTab(tab.name)}
 								className={`${
 									openTab === tab.name
@@ -119,7 +119,7 @@ function TabsComponent() {
 								} inline-block px-4 py-2 text-base rounded shadow`}
 							>
 								{tab.name}
-							</div>
+							</button>
 						</li>
 					))}
 				</ul>
