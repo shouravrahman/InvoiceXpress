@@ -1,62 +1,56 @@
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { z } from "zod";
+import Form from "./Form";
+import { FormProvider } from "react-hook-form";
+
+const schema = z
+	.object({
+		fullname: z
+			.string()
+			.min(3, "Fullname must be at least 3 characters")
+			.max(50, "Fullname cannot exceed 50 characters"),
+
+		email: z.string().email("Must be a valid email"),
+
+		password: z.string().min(6, "Password must be at least 6 characters"),
+
+		company: z
+			.string()
+			.min(3, "Company name must be at least 3 characters")
+			.max(50, "Company name cannot exceed 50 characters"),
+
+		passwordConfirmation: z.string(),
+		accept: z.literal(true, {
+			errorMap: () => ({
+				message: "Please accept terms & conditions before continuing.",
+			}),
+		}),
+	})
+	.refine((data) => data.password === data.passwordConfirmation, {
+		message: "Passwords don't match",
+		path: ["passwordConfirmation"],
+	});
 
 const RegisterForm = () => {
+	const onSubmit = (data) => {
+		//form submission logic here
+		console.log("Form submitted:", data);
+	};
+
 	return (
-		<form className='card-body '>
-			<div className='form-control'>
-				<label className='label'>
-					<span className='label-text'>Full Name</span>
-				</label>
-				<input
-					type='fname'
-					placeholder='Full Name'
-					className='input input-bordered'
-					required
-				/>
-			</div>
-			<div className='form-control'>
-				<label className='label'>
-					<span className='label-text'>Email</span>
-				</label>
-				<input
-					type='email'
-					placeholder='email'
-					className='input input-bordered'
-					required
-				/>
-			</div>
-			<div className='form-control'>
-				<label className='label'>
-					<span className='label-text'>Password</span>
-				</label>
-				<input
-					type='password'
-					placeholder='password'
-					className='input input-bordered'
-					required
-				/>
-				<div className='form-control'>
-					<label className='label'>
-						<span className='label-text'>Company Name</span>
-					</label>
-					<input
-						type='company'
-						placeholder='Company Name'
-						className='input input-bordered'
-						required
-					/>
-				</div>
-				<label className='label'>
-					<a href='#' className='label-text-alt link link-hover'>
-						Forgot password?
-					</a>
-				</label>
-			</div>
-			<div className='form-control mt-6'>
-				<button className='btn btn-accent'>Login</button>
-			</div>
-		</form>
+		<Form schema={schema} onSubmit={onSubmit}>
+			<Form.InputField label='Full Name' name='fullname' />
+			<Form.InputField label='Email' name='email' />
+			{/* <Form.InputField label='Password' name='password' type='password' /> */}
+			<Form.PasswordInput label='Password' name='password' />
+			<Form.ConfirmPasswordInput
+				label='Confirm Password'
+				name='passwordConfirmation'
+			/>
+			<Form.InputField label='Company Name' name='company' />
+			<Form.SubmitButton>Register</Form.SubmitButton>
+			<Form.CheckboxInput label='I Accept Terms & Conditions.' name='accept' />
+		</Form>
 	);
 };
 
