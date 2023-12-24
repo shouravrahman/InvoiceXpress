@@ -9,7 +9,7 @@ const Card = () => {
 					<img src='privacy.svg' className='invert' alt='privacy' />
 				</figure>
 				<div className='card-body px-4 py-6'>
-					<h1 className='card-title text-2xl'>
+					<h1 className='card-title text-2xl font-figtree'>
 						Free shouldn't mean compromising on privacy or security
 					</h1>
 					<p className='text-base text-gray-200'>
@@ -18,7 +18,7 @@ const Card = () => {
 						or sell your information.
 					</p>
 					<div className='card-actions mt-2'>
-						<Button className='btn btn-accent'>Sign up now</Button>
+						<Button className='btn btn-accent text-base'>Sign up now</Button>
 					</div>
 				</div>
 			</div>
