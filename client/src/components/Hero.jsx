@@ -18,18 +18,18 @@ const Hero = () => {
          
          
          </section> */
-		<div className='hero bg-base-100 md:h-screen'>
+		<div className='hero bg-base-100 '>
 			<div className='hero-content justify-center max-w-[100rem] h-full flex-col lg:flex-row gap-6 '>
 				<div className='text-center lg:text-left p-4 flex-[0.7] flex flex-col items-baseline justify-start h-[80%]'>
-					<h1 className='text-6xl font-bold font-figtree'>
+					<h1 className='text-4xl md:text-6xl font-bold font-figtree'>
 						100% free online invoicing software for small businesses
 					</h1>
-					<p className='py-8 pb-10 text-xl'>
+					<p className='py-8 pb-10 text-base md:text-xl'>
 						Invoice Express is an online invoicing software designed to help
 						small businesses with invoicing and payment collection. It is
 						simple, secure, and absolutely free.
 					</p>
-					<div className='self-center md:self-start'>
+					<div className='self-center lg:self-start'>
 						<img
 							src='video.png'
 							alt=''
