@@ -1,7 +1,6 @@
 import React from "react";
 import { z } from "zod";
 import Form from "./Form";
-import { FormProvider } from "react-hook-form";
 
 const schema = z
 	.object({
@@ -33,15 +32,17 @@ const schema = z
 
 const RegisterForm = () => {
 	const onSubmit = (data) => {
-		//form submission logic here
-		console.log("Form submitted:", data);
+		// form submission logic here
+		setTimeout(() => {
+			console.log("Form submitted:", data);
+		}, 4000);
 	};
 
 	return (
 		<Form schema={schema} onSubmit={onSubmit}>
+			{/* Using components directly from Form module */}
 			<Form.InputField label='Full Name' name='fullname' />
 			<Form.InputField label='Email' name='email' />
-			{/* <Form.InputField label='Password' name='password' type='password' /> */}
 			<Form.PasswordInput label='Password' name='password' />
 			<Form.ConfirmPasswordInput
 				label='Confirm Password'
