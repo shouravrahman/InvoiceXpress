@@ -1,18 +1,15 @@
-const errorHandler = (err, req, res, next) => {
-	const statusCode = req.statusCode ? res.statusCode : 500;
+import { CustomError, NotFoundError } from "../errors/customError.js";
+import { systemLogs } from "../utils/logger.js";
 
-	return res.status(statusCode).json({
-		success: false,
-		message: err.message,
-		statusCode,
-		stack: process.env.NODE_ENV === "production" ? null : err.stack,
-	});
+export const errorHandler = (err, req, res, next) => {
+	console.error(err);
+	systemLogs.error(err);
+
+	if (err instanceof CustomError) {
+		console.error(`Error: ${err.message}`);
+		res.status(err.statusCode).json(err.toJSON());
+	} else {
+		console.error(`Unknown Error: ${err.message}`);
+		res.status(500).json({ error: { message: "Internal Server Error" } });
+	}
 };
-
-const notFound = (req, res, next) => {
-	const error = new Error(`That route does not exist - ${req.originalUrl}`);
-	res.status(404);
-	next(error);
-};
-
-export { errorHandler, notFound };
