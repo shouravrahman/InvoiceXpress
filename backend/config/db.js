@@ -4,10 +4,10 @@ import { systemLogs } from "../utils/logger.js";
 
 const conncetToDB = async () => {
 	try {
-		const connectionParams = { dbName: process.env.DB_NAME };
+		// const connectionParams = { dbName: process.env.DB_NAME };
 		const connect = await mongoose.connect(
-			process.env.MONGO_URI,
-			connectionParams
+			process.env.MONGO_URI
+			// connectionParams
 		);
 
 		console.log(
