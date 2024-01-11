@@ -5,10 +5,10 @@
 	"main": "server.js",
 	"type": "module",
 	"scripts": {
-		"start": "node backend/server.js",
-		"server:dev": "nodemon backend/server.js",
+		"start": "node backend/app.js",
+		"app:dev": "nodemon backend/app.js",
 		"client:dev": "npm start --prefix client",
-		"dev": "concurrently \"npm run server:dev\" \"npm run client:dev\""
+		"dev": "concurrently \"npm run  app:dev\" \"npm run client:dev\""
 	},
 	"repository": {
 		"type": "git",
@@ -29,6 +29,7 @@
 	"dependencies": {
 		"bcrypt": "^5.1.1",
 		"chalk": "^5.3.0",
+		"common-es": "^1.0.1",
 		"cookie-parser": "^1.4.6",
 		"cors": "^2.8.5",
 		"dotenv": "^16.3.1",
@@ -42,6 +43,8 @@
 		"mongoose": "^7.4.3",
 		"morgan": "^1.10.0",
 		"nodemailer": "^6.9.4",
+		"swagger-jsdoc": "^6.2.8",
+		"swagger-ui-express": "^5.0.0",
 		"validator": "^13.11.0",
 		"winston": "^3.10.0",
 		"winston-daily-rotate-file": "^4.7.1"
